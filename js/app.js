@@ -24,10 +24,10 @@ const projectedBottles     = Math.floor(projectedFinalVolume * 1000 / BARREL.bot
 const projectedShots       = Math.floor(projectedFinalVolume * 1000 / BARREL.shotSizeMl);
 const projectedPureAlcohol = projectedFinalVolume * BARREL.abvFill;
 
-document.getElementById("proj-volume").textContent  = `~${projectedFinalVolume.toFixed(1)} L`;
-document.getElementById("proj-bottles").textContent = `~${projectedBottles.toLocaleString()}`;
-document.getElementById("proj-shots").textContent   = `~${projectedShots.toLocaleString()}`;
-document.getElementById("proj-alcohol").textContent = `~${projectedPureAlcohol.toFixed(1)} L`;
+document.getElementById("proj-volume").textContent  = `~${projectedFinalVolume.toLocaleString('fi-FI', {minimumFractionDigits: 1, maximumFractionDigits: 1})} L`;
+document.getElementById("proj-bottles").textContent = `~${projectedBottles.toLocaleString('fi-FI')}`;
+document.getElementById("proj-shots").textContent   = `~${projectedShots.toLocaleString('fi-FI')}`;
+document.getElementById("proj-alcohol").textContent = `~${projectedPureAlcohol.toLocaleString('fi-FI', {minimumFractionDigits: 1, maximumFractionDigits: 1})} L`;
 
 // ---------------------------------------------------------------
 //  Calendar-accurate countdown
@@ -87,15 +87,15 @@ function tick() {
   const angelShareLost = BARREL.startVolumeLiters - currentVolume;
 
   // Stats cards
-  document.getElementById("stat-volume").textContent   = currentVolume.toFixed(2);
-  document.getElementById("stat-angel").textContent    = angelShareLost.toFixed(2);
-  document.getElementById("stat-daysaged").textContent = Math.floor(daysElapsed).toLocaleString();
-  document.getElementById("stat-daysrem").textContent  = Math.max(0, Math.floor(daysRemaining)).toLocaleString();
-  document.getElementById("footer-days").textContent   = Math.max(0, Math.floor(daysRemaining)).toLocaleString();
+  document.getElementById("stat-volume").textContent   = currentVolume.toLocaleString('fi-FI', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+  document.getElementById("stat-angel").textContent    = angelShareLost.toLocaleString('fi-FI', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+  document.getElementById("stat-daysaged").textContent = Math.floor(daysElapsed).toLocaleString('fi-FI');
+  document.getElementById("stat-daysrem").textContent  = Math.max(0, Math.floor(daysRemaining)).toLocaleString('fi-FI');
+  document.getElementById("footer-days").textContent   = Math.max(0, Math.floor(daysRemaining)).toLocaleString('fi-FI');
 
   // Progress ring
   setRing(progressPct);
-  document.getElementById("ring-pct").textContent = progressPct.toFixed(1) + "%";
+  document.getElementById("ring-pct").textContent = progressPct.toFixed(6) + "%";
 
   // Countdown
   const cd = calcCountdown(now, BARREL.readyDate);
@@ -114,7 +114,7 @@ function tick() {
 }
 
 tick();
-setInterval(tick, 1000);
+setInterval(tick, 200);
 
 // ---------------------------------------------------------------
 //  Angel's share chart (Chart.js)

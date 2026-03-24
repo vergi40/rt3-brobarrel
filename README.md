@@ -1,6 +1,6 @@
 # rt3-brobarrel
 
-A static countdown web page for the **Round Table** group's private whiskey barrel ("Bro Barrel"), tracking the 9-year aging journey from April 2024 to April 2034.
+A static countdown web page for the **Round Table** group's private whiskey barrel ("Bro Barrel"), tracking the 10-year aging journey from April 2024 to April 2034.
 
 ## Live site
 
