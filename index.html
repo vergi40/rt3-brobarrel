@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bro Barrel — Round Table</title>
+  <meta name="description" content="Round Table private whiskey barrel aging countdown. Barreled April 2024, ready April 2034." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ============================================================
+       HERO
+       ============================================================ -->
+  <header class="hero">
+    <div class="hero-inner">
+      <img src="assets/barrel.svg" alt="Whiskey barrel" class="barrel-icon">
+      <div class="hero-text">
+        <h1 class="hero-title">Bro Barrel</h1>
+        <p class="hero-subtitle">Round Table &mdash; Private Cask</p>
+        <span class="hero-badge">Barreled 26 April 2024</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- ============================================================
+         COUNTDOWN
+         ============================================================ -->
+    <section class="section countdown-section">
+      <h2 class="section-title">Time Until Maturity</h2>
+
+      <div class="countdown" id="countdown" aria-live="polite" aria-label="Countdown to maturity">
+        <div class="cd-unit">
+          <span class="cd-value" id="cd-years">—</span>
+          <span class="cd-label">Years</span>
+        </div>
+        <div class="cd-sep" aria-hidden="true">:</div>
+        <div class="cd-unit">
+          <span class="cd-value" id="cd-months">—</span>
+          <span class="cd-label">Months</span>
+        </div>
+        <div class="cd-sep" aria-hidden="true">:</div>
+        <div class="cd-unit">
+          <span class="cd-value" id="cd-days">—</span>
+          <span class="cd-label">Days</span>
+        </div>
+        <div class="cd-sep" aria-hidden="true">:</div>
+        <div class="cd-unit">
+          <span class="cd-value" id="cd-hours">--</span>
+          <span class="cd-label">Hrs</span>
+        </div>
+        <div class="cd-sep" aria-hidden="true">:</div>
+        <div class="cd-unit">
+          <span class="cd-value" id="cd-minutes">--</span>
+          <span class="cd-label">Min</span>
+        </div>
+        <div class="cd-sep" aria-hidden="true">:</div>
+        <div class="cd-unit">
+          <span class="cd-value" id="cd-seconds">--</span>
+          <span class="cd-label">Sec</span>
+        </div>
+      </div>
+
+      <div id="matured-msg" class="matured-msg" style="display:none">
+        🥃 The barrel has matured — time to bottle!
+      </div>
+    </section>
+
+    <!-- ============================================================
+         PROGRESS RING
+         ============================================================ -->
+    <section class="section progress-section">
+      <h2 class="section-title">Aging Progress</h2>
+      <div class="ring-wrap">
+        <svg class="progress-ring" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle class="ring-bg"   cx="100" cy="100" r="88"/>
+          <circle class="ring-fill" cx="100" cy="100" r="88" id="ring-fill"/>
+        </svg>
+        <div class="ring-label">
+          <span class="ring-pct" id="ring-pct">…</span>
+          <span class="ring-sub">aged</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         LIVE STATS CARDS
+         ============================================================ -->
+    <section class="section cards-section">
+      <h2 class="section-title">Live Stats</h2>
+      <div class="cards">
+        <div class="card">
+          <span class="card-value" id="stat-volume">…</span>
+          <span class="card-label">Volume today (L)</span>
+        </div>
+        <div class="card">
+          <span class="card-value" id="stat-angel">…</span>
+          <span class="card-label">Angel's share taken (L)</span>
+        </div>
+        <div class="card">
+          <span class="card-value" id="stat-daysaged">…</span>
+          <span class="card-label">Days aged</span>
+        </div>
+        <div class="card">
+          <span class="card-value" id="stat-daysrem">…</span>
+          <span class="card-label">Days remaining</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         ANGEL'S SHARE CHART
+         ============================================================ -->
+    <section class="section chart-section">
+      <h2 class="section-title">Angel's Share Over Time</h2>
+      <div class="chart-wrap">
+        <canvas id="angels-chart" aria-label="Volume declining over 9 years due to angel's share"></canvas>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         BARREL VITALS
+         ============================================================ -->
+    <section class="section vitals-section">
+      <h2 class="section-title">Barrel Vitals</h2>
+      <table class="vitals-table">
+        <tbody>
+          <tr><th>Barreled</th><td>26 April 2024</td></tr>
+          <tr><th>Expected maturity</th><td>26 April 2034</td></tr>
+          <tr><th>Starting volume</th><td>200.55 L</td></tr>
+          <tr><th>ABV at fill</th><td>63.5 %</td></tr>
+          <tr><th>Annual angel's share</th><td>~2 %</td></tr>
+          <tr><th>Cask type</th><td>—</td></tr>
+          <tr><th>Distillery</th><td>—</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ============================================================
+         AT MATURITY PROJECTIONS
+         ============================================================ -->
+    <section class="section projections-section">
+      <h2 class="section-title">At Maturity &mdash; 26 April 2034</h2>
+      <div class="cards">
+        <div class="card card--highlight">
+          <span class="card-value" id="proj-volume">…</span>
+          <span class="card-label">Projected volume (L)</span>
+        </div>
+        <div class="card card--highlight">
+          <span class="card-value" id="proj-bottles">…</span>
+          <span class="card-label">Bottles (70 cl)</span>
+        </div>
+        <div class="card card--highlight">
+          <span class="card-value" id="proj-shots">…</span>
+          <span class="card-label">Shots (4 cl)</span>
+        </div>
+        <div class="card card--highlight">
+          <span class="card-value" id="proj-alcohol">…</span>
+          <span class="card-label">Pure alcohol (L)</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="footer">
+    <p>Round Table &mdash; est. 2024</p>
+    <p id="footer-sleep">This barrel is still sleeping. Check back in <span id="footer-days">…</span> days.</p>
+  </footer>
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
